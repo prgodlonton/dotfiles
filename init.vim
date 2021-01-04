@@ -38,6 +38,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
@@ -79,6 +80,10 @@ let g:airline_symbols.readonly = ''
 let g:indentLine_enabled = 1
 let g:indentLine_char = '┆'
 let g:indentLine_defaultGroup = 'SpecialKey'
+
+
+" Redraws the screen and removes any search highlighting.
+nnoremap <silent> <c-l> :nohl<cr><c-l>
 
 " empty all registers
 fun! EmptyRegisters()
