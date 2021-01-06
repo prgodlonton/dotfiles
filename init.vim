@@ -14,6 +14,7 @@ set noswapfile
 set nowrap
 set number relativenumber
 set shiftwidth=3
+set showcmd
 set tabstop=3 softtabstop=3
 set termguicolors
 set undodir=~/.vim/undodir
@@ -26,6 +27,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
 
+" close buffer without closing window
+Plug 'rbgrouleff/bclose.vim'
+
 " themes
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
@@ -35,6 +39,8 @@ Plug 'vim-airline/vim-airline-themes'
 " tab markers
 Plug 'Yggdroot/indentLine'
 
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -80,7 +86,6 @@ let g:airline_symbols.readonly = ''
 let g:indentLine_enabled = 1
 let g:indentLine_char = '┆'
 let g:indentLine_defaultGroup = 'SpecialKey'
-
 
 " Redraws the screen and removes any search highlighting.
 nnoremap <silent> <c-l> :nohl<cr><c-l>
