@@ -19,6 +19,7 @@ set tabstop=3 softtabstop=3
 set termguicolors
 set undodir=~/.vim/undodir
 set undofile
+set scrolloff=8
 
 call plug#begin('~/.vim/plugged')
 
