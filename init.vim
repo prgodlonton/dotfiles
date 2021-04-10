@@ -23,10 +23,14 @@ set scrolloff=8
 
 call plug#begin('~/.vim/plugged')
 
-" fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" nvim-telescope
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " close buffer without closing window
 Plug 'rbgrouleff/bclose.vim'
@@ -34,6 +38,7 @@ Plug 'rbgrouleff/bclose.vim'
 " themes
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
+Plug 'colepeters/spacemacs-theme.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -50,13 +55,32 @@ Plug 'tpope/vim-vinegar'
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
+let mapleader = ' '
+
 " Initialize plugin system
 call plug#end()
 
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
-let $FZF_DEFAULT_OPTS='--reverse'
+" treesitter config
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true
+  }
+}
+EOF
 
-colorscheme gruvbox
+" telescope shortcuts
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" gopher help
+nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
+
+" colorscheme gruvbox
+colorscheme spacemacs-theme
 set background=dark
 let g:gruvbox_contrast_dark = 'soft'
 
