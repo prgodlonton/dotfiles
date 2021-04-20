@@ -54,6 +54,7 @@ Plug 'tpope/vim-vinegar'
 
 " Golang support
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let mapleader = ' '
 
@@ -75,6 +76,13 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" coc.nvim
+autocmd BufEnter *.go nmap <leader>i  <Plug>(go-info)
+autocmd BufEnter *.go nmap <leader>ii  <Plug>(go-implements)
+autocmd BufEnter *.go nmap <leader>ci  <Plug>(go-describe)
+autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
+nmap <leader>cr <Plug>(coc-references)
 
 " gopher help
 nnoremap <Leader>ee oif err != nil {<CR>log.Fatalf("%+v\n", err)<CR>}<CR><esc>kkI<esc>
